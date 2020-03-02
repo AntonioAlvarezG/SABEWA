@@ -6,7 +6,7 @@ import { HomeBanners } from '../data-base/entities/Home/home-banners.entity';
 import { Awards } from '../data-base/entities/Home/awards.entity';
 import { Community } from '../data-base/entities/Home/community.entity';
 import { Anahuac } from '../data-base/entities/Home/anahuac.entity';
-import { Mainfooter } from '../data-base/entities/Home/mainfooter.entity';
+import { LastBuy } from '../data-base/entities/Home/last-buy.entity';
 
 @ApiTags('Home Page End-Points')
 @Controller('api/home')
@@ -154,7 +154,7 @@ export class HomeController {
 
     // get a footer
     @Get('footer')
-    @ApiResponse({ status: 200, type: Mainfooter, isArray: true })
+    @ApiResponse({ status: 200, type: LastBuy, isArray: true })
     @ApiOperation({ summary: 'Get the section before the footer'})
     getFoter() {
         return this.home.getFoter();
