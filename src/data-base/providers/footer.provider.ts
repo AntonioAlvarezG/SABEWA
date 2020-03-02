@@ -1,5 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
-import { Footer } from '../entities/Home/footer.entity';
+import { Mainfooter } from '../entities/Home/mainfooter.entity';
 
 
 export const homefooterDataBaseProvider = [
@@ -26,7 +26,7 @@ export const homefooterDataBaseProvider = [
 export const homefooterRepositoriesProviders = [
     {
         provide: 'HOME_FOOTER_ENTITY_REPOSITORY',
-        useFactory: (connection: Connection) => connection.getRepository(Footer),
+        useFactory: (connection: Connection) => connection.getRepository(Mainfooter),
         inject: ['DATABASE_HOME_FOOTER_CONNECTION'],
     }
 ];

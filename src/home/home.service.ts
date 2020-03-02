@@ -4,7 +4,7 @@ import { HomeBanners } from '../data-base/entities/Home/home-banners.entity';
 import { Awards } from '../data-base/entities/Home/awards.entity';
 import { Community } from '../data-base/entities/Home/community.entity';
 import { Anahuac } from '../data-base/entities/Home/anahuac.entity';
-import { Footer } from '../data-base/entities/Home/Footer.entity';
+import { Mainfooter } from '../data-base/entities/Home/mainfooter.entity';
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class HomeService {
         @Inject('HOME_AWARDS_ENTITY_REPOSITORY') private readonly awards: Repository<Awards>,
         @Inject('HOME_COMMUNITY_ENTITY_REPOSITORY') private readonly community: Repository<Community>,
         @Inject('HOME_ANAHUAC_ENTITY_REPOSITORY') private readonly anahuac: Repository<Anahuac>,
-        @Inject('HOME_FOOTER_ENTITY_REPOSITORY') private readonly Footer: Repository<Footer>
+        @Inject('HOME_FOOTER_ENTITY_REPOSITORY') private readonly Footer: Repository<Mainfooter>
         
     ){}
 
