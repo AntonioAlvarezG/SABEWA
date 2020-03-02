@@ -6,7 +6,7 @@ import { HomeBanners } from '../data-base/entities/Home/home-banners.entity';
 import { Awards } from '../data-base/entities/Home/awards.entity';
 import { Community } from '../data-base/entities/Home/community.entity';
 import { Anahuac } from '../data-base/entities/Home/anahuac.entity';
-import { LastBuy } from '../data-base/entities/Home/last-buy.entity';
+// import { LastBuy } from '../data-base/entities/Home/last-buy.entity';
 
 @ApiTags('Home Page End-Points')
 @Controller('api/home')
@@ -141,32 +141,32 @@ export class HomeController {
 
 
     // post the footer
-    @Post('footer')
-    @ApiResponse({ status: 200, type: Anahuac, isArray: true })
-    @ApiOperation({ summary: 'Post the section before the footer' })
-    addNewFooter(@Body() body: { homeKnTxt: string, homeBuyImg: string}
-    ) {
-        return this.home.addNewFooter(body.homeKnTxt, body.homeBuyImg);
-    }
+    // @Post('footer')
+    // @ApiResponse({ status: 200, type: Anahuac, isArray: true })
+    // @ApiOperation({ summary: 'Post the section before the footer' })
+    // addNewFooter(@Body() body: { homeKnTxt: string, homeBuyImg: string}
+    // ) {
+    //     return this.home.addNewFooter(body.homeKnTxt, body.homeBuyImg);
+    // }
 
 
    
 
     // get a footer
-    @Get('footer')
-    @ApiResponse({ status: 200, type: LastBuy, isArray: true })
-    @ApiOperation({ summary: 'Get the section before the footer'})
-    getFoter() {
-        return this.home.getFoter();
-    }
+    // @Get('footer')
+    // @ApiResponse({ status: 200, type: LastBuy, isArray: true })
+    // @ApiOperation({ summary: 'Get the section before the footer'})
+    // getFoter() {
+    //     return this.home.getFoter();
+    // }
 
-    @Put('footer/:footerdId')
-    @ApiResponse({ status: 200, type: Anahuac, isArray: true })
-    @ApiOperation({ summary: 'Post the section before the footer' })
-    updateFooter(@Param('footerdId') footerdId:string, @Body() body: { homeKnTxt: string, homeBuyImg: string }
-    ) {
-        return this.home.updateFooter(footerdId, body.homeKnTxt, body.homeBuyImg);
-    }
+    // @Put('footer/:footerdId')
+    // @ApiResponse({ status: 200, type: Anahuac, isArray: true })
+    // @ApiOperation({ summary: 'Post the section before the footer' })
+    // updateFooter(@Param('footerdId') footerdId:string, @Body() body: { homeKnTxt: string, homeBuyImg: string }
+    // ) {
+    //     return this.home.updateFooter(footerdId, body.homeKnTxt, body.homeBuyImg);
+    // }
 
 
 

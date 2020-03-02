@@ -4,7 +4,7 @@ import { HomeBanners } from '../data-base/entities/Home/home-banners.entity';
 import { Awards } from '../data-base/entities/Home/awards.entity';
 import { Community } from '../data-base/entities/Home/community.entity';
 import { Anahuac } from '../data-base/entities/Home/anahuac.entity';
-import { LastBuy } from '../data-base/entities/Home/last-buy.entity';
+// import { LastBuy } from '../data-base/entities/Home/last-buy.entity';
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class HomeService {
         @Inject('HOME_AWARDS_ENTITY_REPOSITORY') private readonly awards: Repository<Awards>,
         @Inject('HOME_COMMUNITY_ENTITY_REPOSITORY') private readonly community: Repository<Community>,
         @Inject('HOME_ANAHUAC_ENTITY_REPOSITORY') private readonly anahuac: Repository<Anahuac>,
-        @Inject('HOME_FOOTER_ENTITY_REPOSITORY') private readonly Footer: Repository<LastBuy>
+        // @Inject('HOME_FOOTER_ENTITY_REPOSITORY') private readonly Footer: Repository<LastBuy>
         
     ){}
 
@@ -151,29 +151,29 @@ export class HomeService {
 
 
 
-    async addNewFooter(homeBuyImg: string, homeKnTxt: string ){
-        const footer = this.Footer.create();
-        footer.homeBuyImg = homeBuyImg;
-        footer.homeKnTxt = homeKnTxt;
+    // async addNewFooter(homeBuyImg: string, homeKnTxt: string ){
+    //     const footer = this.Footer.create();
+    //     footer.homeBuyImg = homeBuyImg;
+    //     footer.homeKnTxt = homeKnTxt;
 
-        return this.Footer.save(footer);
+    //     return this.Footer.save(footer);
 
-    }
-
-
-    async getFoter() {
-        return this.Footer.find();
-    }
+    // }
 
 
-    async updateFooter(footerdId: string, homeBuyImg: string, homeKnTxt: string) {
-        const footer = await this.Footer.findOne(footerdId);
-        footer.homeBuyImg = homeBuyImg;
-        footer.homeKnTxt = homeKnTxt;
+    // async getFoter() {
+    //     return this.Footer.find();
+    // }
 
-        return this.Footer.save(footer);
 
-    }
+    // async updateFooter(footerdId: string, homeBuyImg: string, homeKnTxt: string) {
+    //     const footer = await this.Footer.findOne(footerdId);
+    //     footer.homeBuyImg = homeBuyImg;
+    //     footer.homeKnTxt = homeKnTxt;
+
+    //     return this.Footer.save(footer);
+
+    // }
 
 
     

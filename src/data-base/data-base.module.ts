@@ -3,7 +3,7 @@ import { identityDataBaseProvider, identityRepositoriesProviders } from './provi
 import { homeAnahuacDataBaseProvider, homeAnahuacRepositoriesProviders } from './providers/anahuac.provider';
 import { homeAwardsRepositoriesProviders, homeAwardsDataBaseProvider } from './providers/awards.provider';
 import { homeCommunityDataBaseProvider, homeCommunityRepositoriesProviders } from './providers/community.provider';
-import { homefooterDataBaseProvider, homefooterRepositoriesProviders } from './providers/last-buy.provider';
+// import { homefooterDataBaseProvider, homefooterRepositoriesProviders } from './providers/last-buy.provider';
 import { homeBannersDataBaseProvider, homeBannersRepositoriesProviders } from './providers/homeBanners.provider';
 import { aboutValuesDataBaseProvider, aboutValuesRepositoriesProviders } from './providers/about-values.provider';
 import { aboutDataBaseProvider, aboutRepositoriesProviders } from './providers/about.provider';
@@ -13,12 +13,12 @@ import { newsDataBaseProvider, newsRepositoriesProviders } from './providers/new
 @Module({
     providers: [...identityDataBaseProvider, ...identityRepositoriesProviders, ...homeAnahuacDataBaseProvider, ...homeAnahuacRepositoriesProviders,
         ...homeAwardsRepositoriesProviders, ...homeAwardsDataBaseProvider, ...homeCommunityDataBaseProvider, ...homeCommunityRepositoriesProviders,
-        ...homefooterDataBaseProvider, ...homefooterRepositoriesProviders, ...homeBannersDataBaseProvider, ...homeBannersRepositoriesProviders, 
+         ...homeBannersDataBaseProvider, ...homeBannersRepositoriesProviders, 
         ...aboutValuesDataBaseProvider, ...aboutValuesRepositoriesProviders, ...aboutDataBaseProvider, ...aboutRepositoriesProviders, ...galleryRepositoriesProviders, ...galleryDataBaseProvider,
         ...newsRepositoriesProviders, ...newsDataBaseProvider],
     exports: [...identityDataBaseProvider, ...identityRepositoriesProviders, ...homeAnahuacDataBaseProvider, ...homeAnahuacRepositoriesProviders,
         ...homeAwardsRepositoriesProviders, ...homeAwardsDataBaseProvider, ...homeCommunityDataBaseProvider, ...homeCommunityRepositoriesProviders,
-        ...homefooterDataBaseProvider, ...homefooterRepositoriesProviders, ...homeBannersDataBaseProvider, ...homeBannersRepositoriesProviders, 
+        ...homeBannersDataBaseProvider, ...homeBannersRepositoriesProviders, 
         ...aboutValuesDataBaseProvider, ...aboutValuesRepositoriesProviders, ...aboutDataBaseProvider, ...aboutRepositoriesProviders,...galleryRepositoriesProviders, ...galleryDataBaseProvider,
         ...newsRepositoriesProviders, ...newsDataBaseProvider],
 })
