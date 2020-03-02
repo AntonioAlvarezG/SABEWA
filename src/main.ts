@@ -16,6 +16,6 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, document);
   app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
 
-  await app.listen(80);
+  await app.listen(8080);
 }
 bootstrap();
