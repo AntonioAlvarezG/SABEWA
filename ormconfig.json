@@ -1,0 +1,41 @@
+[
+    {
+        "type": "mysql",
+        "host": "sorteosql.mysql.database.azure.com",
+        "port": 3306,
+        "name": "identityConnection",
+        "username": "SA_User_admin@sorteosql",
+        "password": "C5&Y8JL<yw+).)PV",
+        "database": "Sorteo",
+        "entities": [
+            "src/data-base/entities/**/*.entity{.ts,.js}"
+        ],
+        "synchronize": false
+    },
+    {
+        "type": "mysql",
+        "host": "sorteosql.mysql.database.azure.com",
+        "port": 3306,
+        "name": "homeBanners",
+        "username": "SA_User_admin@sorteosql",
+        "password": "C5&Y8JL<yw+).)PV",
+        "database": "HomePage",
+        "entities": [
+            "src/data-base/entities/**/*.entity{.ts,.js}"
+        ],
+        "synchronize": false
+    },
+    {
+        "type": "mysql",
+        "host": "sorteosql.mysql.database.azure.com",
+        "port": 3306,
+        "name": "homePage",
+        "username": "SA_User_admin@sorteosql",
+        "password": "C5&Y8JL<yw+).)PV",
+        "database": "Sorteo",
+        "entities": [
+            "src/data-base/entities/**/*.entity{.ts,.js}"
+        ],
+        "synchronize": false
+    }
+]
