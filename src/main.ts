@@ -4,7 +4,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { join } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   const express = require('express')
   const options = new DocumentBuilder()
     .setTitle('Sorteo Anahuac API')
@@ -16,6 +16,6 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, document);
   app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
