@@ -7,11 +7,12 @@ import { AboutModule } from './about/about.module';
 import { GalleryModule } from './gallery/gallery.module';
 import { NewsModule } from './news/news.module';
 import { IdentityModule } from './identity/identity.module';
+import { ConfigModule } from './config/config.module';
 
 
 @Module({
-  imports: [DataBaseModule, HomeModule, AboutModule, GalleryModule, NewsModule, IdentityModule ],
+  imports: [DataBaseModule, HomeModule, AboutModule, GalleryModule, NewsModule, IdentityModule, ConfigModule ],
   controllers: [AppController],
-  providers: [AppService, IdentityModule],
+  providers: [AppService, IdentityModule, ConfigModule],
 })
 export class AppModule {}

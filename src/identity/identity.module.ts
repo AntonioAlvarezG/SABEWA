@@ -4,17 +4,18 @@ import { UserService } from './user/user.service';
 import { DataBaseModule } from '../data-base/data-base.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule } from 'src/config/config.module';
-import { ConfigService } from 'src/config/config.service';
-import { Configuration } from 'src/config/config.keys';
+import { ConfigModule } from '../config/config.module';
+import { ConfigService } from '../config/config.service';
+import { Configuration } from '../config/config.keys';
 import { AuthService } from './auth/auth.service';
 import { JwtStrategy } from './auth/jwt.strategy';
 import { UserController } from './user/user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthRepository } from './auth/auth.repository';
 
+
 @Module({
-  imports: [AuthRepository,DataBaseModule, PassportModule.register({
+  imports: [AuthRepository, ConfigModule,DataBaseModule, PassportModule.register({
     defaultStrategy: 'jwt',
   }),
     JwtModule.registerAsync({
@@ -31,7 +32,7 @@ import { AuthRepository } from './auth/auth.repository';
     })
 ],
   controllers: [AuthController, UserController],
-  providers: [UserService, AuthService, ConfigService, JwtStrategy, AuthRepository ],
+  providers: [UserService, AuthService, ConfigService, JwtStrategy, AuthRepository, ConfigModule ],
   exports: [JwtStrategy, PassportModule],
 })
 export class IdentityModule {}
