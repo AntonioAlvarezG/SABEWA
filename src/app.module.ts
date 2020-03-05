@@ -8,9 +8,10 @@ import { GalleryModule } from './gallery/gallery.module';
 import { NewsModule } from './news/news.module';
 import { IdentityModule } from './identity/identity.module';
 
+
 @Module({
   imports: [DataBaseModule, HomeModule, AboutModule, GalleryModule, NewsModule, IdentityModule ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, IdentityModule],
 })
 export class AppModule {}
