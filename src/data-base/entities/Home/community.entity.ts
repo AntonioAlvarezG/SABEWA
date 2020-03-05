@@ -4,9 +4,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 
 @Entity({
-    database: 'HomePage',
-    name: 'homeCommunity',
-    synchronize: false
 })
 export class Community {
 

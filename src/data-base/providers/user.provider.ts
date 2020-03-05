@@ -11,7 +11,7 @@ export const identityDataBaseProvider = [
             port: 3306,
             username: 'SA_User_admin@sorteosql',
             password: 'C5&Y8JL<yw+).)PV',
-            database: 'Sorteo',
+            database: 'Identidad',
             name: 'identityConnection',
             entities: [
                 __dirname + '/../entities/identity/*.entity{.ts,.js}',

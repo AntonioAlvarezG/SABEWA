@@ -1,32 +1,37 @@
-import { Entity, PrimaryColumn, Column, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, PrimaryColumn, Column, ManyToMany, JoinTable, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 
 
-@Entity({
-    database: 'Identity',
-    name: 'identityConnection',
-    synchronize: false
-})
-export class UserEntity {
-    @PrimaryColumn({ type: 'varchar', length: 100, unique: true })
+@Entity(
+)
+export class UserEntity extends BaseEntity {
+    @PrimaryGeneratedColumn('increment')
     @IsNotEmpty()
-    userId: string;
+    userId: number;
 
-    @Column()
+    @Column({ type: 'varchar', unique: true })
     @IsNotEmpty()
-    firstName: string;
+    username: string;
 
-    @Column()
+    @Column({ type: 'varchar', nullable: false })
     @IsNotEmpty()
     email: string;
 
     
-    @Column()
+    @Column({ type: 'varchar', nullable: false })
     @IsNotEmpty()
-    lasName: string;
+    password: string;
 
-    @Column()
+    @Column({ type: 'boolean', default: 1 })
     @IsNotEmpty()
-    pasword: string;
+    status: boolean;
+
+    @CreateDateColumn({ type: 'timestamp', name: 'created_at' })
+    @IsNotEmpty()
+    createdAt: Date;
+
+    @UpdateDateColumn({ type: 'timestamp', name: 'updated_at' })
+    @IsNotEmpty()
+    updateAt: Date;
     
 }

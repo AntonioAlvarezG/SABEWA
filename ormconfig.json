@@ -6,9 +6,9 @@
         "name": "identityConnection",
         "username": "SA_User_admin@sorteosql",
         "password": "C5&Y8JL<yw+).)PV",
-        "database": "Sorteo",
+        "database": "Identidad",
         "entities": [
-            "src/data-base/entities/**/*.entity{.ts,.js}"
+            "src/data-base/entities/identity/**/*.entity{.ts,.js}"
         ],
         "synchronize": false
     },

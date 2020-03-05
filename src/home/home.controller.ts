@@ -6,6 +6,7 @@ import { HomeBanners } from '../data-base/entities/Home/home-banners.entity';
 import { Awards } from '../data-base/entities/Home/awards.entity';
 import { Community } from '../data-base/entities/Home/community.entity';
 import { Anahuac } from '../data-base/entities/Home/anahuac.entity';
+import { AuthGuard } from '@nestjs/passport';
 // import { LastBuy } from '../data-base/entities/Home/last-buy.entity';
 
 @ApiTags('Home Page End-Points')
@@ -56,9 +57,11 @@ export class HomeController {
     @Post('award')
     @ApiResponse({ status: 200, type: Awards, isArray: true })
     @ApiOperation({ summary: 'Add new clasification award', description: 'add new award ratings ' })
-    addNewAward(@Body() body: { homeAwAwardTxt: string, homeAwAwardImg: string }
+    @UseInterceptors(FileInterceptor('file'))
+    addNewAward(@UploadedFile() file,
+                @Body() body: { homeAwAwardTxt: string}
     ){
-        return this.home.addNewAward(body.homeAwAwardImg, body.homeAwAwardTxt);
+        return this.home.addNewAward(file, body.homeAwAwardTxt);
     }
 
 

@@ -3,9 +3,6 @@ import { IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 @Entity({
-    database: 'AboutPage',
-    name: 'aboutPage',
-    synchronize: false
 })
 
 export class About {

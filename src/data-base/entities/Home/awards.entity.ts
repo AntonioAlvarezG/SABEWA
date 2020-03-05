@@ -4,9 +4,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 
 @Entity({
-    database: 'HomePage',
-    name: 'homeAwards',
-    synchronize: false
 })
 export class Awards {
     @PrimaryGeneratedColumn()

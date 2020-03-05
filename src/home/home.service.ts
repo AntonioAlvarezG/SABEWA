@@ -39,7 +39,6 @@ export class HomeService {
 
     private ensureDirectoryExistance(dir: string) {
         if (existsSync(dir)) {
-            console.log(dir);
             return;
         }
         // mkdirSync(dir, { recursive: true });
@@ -73,9 +72,13 @@ export class HomeService {
 
     // Add new award ratinf
 
-    async addNewAward(homeAwAwardImg: string, homeAwAwardTxt:string){
+    async addNewAward(file: { buffer: Buffer, size: number, encoding: string, mimetype: string, originalname: string }, homeAwAwardTxt:string){
+        const fileName = file.originalname;
+        const dir = './uploads/';
+        this.ensureDirectoryExistance(dir);
+        writeFileSync(dir + fileName, file.buffer);
         const award = this.awards.create();
-        award.homeAwAwardImg = homeAwAwardImg;
+        award.homeAwAwardImg = fileName;
         award.homeAwAwardTxt = homeAwAwardTxt;
 
         return this.awards.save(award);
