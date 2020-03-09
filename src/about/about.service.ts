@@ -23,8 +23,8 @@ export class AboutService {
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const about = this.about.create();
-        about.aboutHeImg = "http://localhost:3000/uploads/" + fileName;
-        about.aboutUsImg = "http://localhost:3000/uploads/" + file2;
+        about.aboutHeImg = "http://phpstack-258137-1183389.cloudwaysapps.com/" + fileName;
+        about.aboutUsImg = "http://phpstack-258137-1183389.cloudwaysapps.com/" + file2;
         about.aboutUsTxt = aboutUsTxt;
         about.aboutMiTxt = aboutMiTxt;
         about.aboutViTxt = aboutViTxt;
