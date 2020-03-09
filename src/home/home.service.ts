@@ -26,7 +26,7 @@ export class HomeService {
     async addNewBanner(homeHePlaceTxt: string, homeHeAwardTxt: string, homeHeLocateTxt:string,
         file: { buffer: Buffer, size: number, encoding: string, mimetype: string, originalname: string }){
         const fileName = file.originalname;
-        const dir = './uploads/' ;
+        const dir = '../uploads/' ;
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const banner = this.homeBanners.create();
