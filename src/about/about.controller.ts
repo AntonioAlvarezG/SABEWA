@@ -1,8 +1,9 @@
-import { Controller, Post, Body, Get, Put, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Put, Param, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { AboutService } from './about.service';
-import { About } from '../data-base/entities/About/about.entity';
+import { aboutpage } from '../data-base/entities/About/about.entity';
 import { Values } from '../data-base/entities/About/values.entity';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 
 
@@ -16,23 +17,26 @@ export class AboutController {
 
 
     @Post()
-    @ApiResponse({ status: 200, description: 'Succes saving', type: About, isArray: true })
+    @ApiResponse({ status: 200, description: 'Succes saving', type: aboutpage, isArray: true })
     @ApiOperation({ summary: 'Add about info', description: 'Add about info the the about page ' })
+    @UseInterceptors(FileInterceptor('file'), FileInterceptor('secondfile'))
     addNewAbout(
-        @Body() body: { aboutHeImg: string, aboutUsImg: string, aboutMiTxt: string, aboutViTxt: string, aboutUsTxt:string }
+        @UploadedFile() file,
+        @UploadedFile() secondfile,
+        @Body() body: {  aboutMiTxt: string, aboutViTxt: string, aboutUsTxt:string }
     ) {
-        return this.about.addNewAbout(body.aboutHeImg, body.aboutUsImg, body.aboutMiTxt, body.aboutViTxt, body.aboutUsTxt);
+        return this.about.addNewAbout(file, secondfile, body.aboutMiTxt, body.aboutViTxt, body.aboutUsTxt);
     }
 
     @Get()
-    @ApiResponse({ status: 200, type: About, isArray: true })
+    @ApiResponse({ status: 200, type: aboutpage, isArray: true })
     @ApiOperation({ summary: 'Get the about page', description: 'Get the abput page data' })
     getAbout() {
         return this.about.getAbout();
     }
 
     @Put('/:pageId')
-    @ApiResponse({ status: 200, type: About, isArray: true })
+    @ApiResponse({ status: 200, type: aboutpage, isArray: true })
     @ApiOperation({ summary: 'Get the about page', description: 'Get the abput page data' })
     updateAbout(
         @Param('pageId') pageId:string,

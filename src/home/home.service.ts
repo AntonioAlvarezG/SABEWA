@@ -1,9 +1,9 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { homebanners } from '../data-base/entities/Home/home-banners.entity';
-import { Awards } from '../data-base/entities/Home/awards.entity';
-import { Community } from '../data-base/entities/Home/community.entity';
-import { Anahuac } from '../data-base/entities/Home/anahuac.entity';
+import { homeawards } from '../data-base/entities/Home/awards.entity';
+import { homecommunity } from '../data-base/entities/Home/community.entity';
+import { homeanahuac } from '../data-base/entities/Home/anahuac.entity';
 // import { LastBuy } from '../data-base/entities/Home/last-buy.entity';
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 
@@ -12,9 +12,9 @@ export class HomeService {
 
     constructor(
         @Inject('HOME_BANNERS_ENTITY_REPOSITORY') private readonly homeBanners: Repository<homebanners>,
-        @Inject('HOME_AWARDS_ENTITY_REPOSITORY') private readonly awards: Repository<Awards>,
-        @Inject('HOME_COMMUNITY_ENTITY_REPOSITORY') private readonly community: Repository<Community>,
-        @Inject('HOME_ANAHUAC_ENTITY_REPOSITORY') private readonly anahuac: Repository<Anahuac>,
+        @Inject('HOME_AWARDS_ENTITY_REPOSITORY') private readonly awards: Repository<homeawards>,
+        @Inject('HOME_COMMUNITY_ENTITY_REPOSITORY') private readonly community: Repository<homecommunity>,
+        @Inject('HOME_ANAHUAC_ENTITY_REPOSITORY') private readonly anahuac: Repository<homeanahuac>,
         // @Inject('HOME_FOOTER_ENTITY_REPOSITORY') private readonly Footer: Repository<LastBuy>
         
     ){}
@@ -30,7 +30,7 @@ export class HomeService {
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const banner = this.homeBanners.create();
-        banner.homeHeSliderImg = fileName;
+        banner.homeHeSliderImg = "http://localhost:3000/uploads/" + fileName;
         banner.homeHePlaceTxt = homeHePlaceTxt;
         banner.homeHeLocateTxt = homeHeLocateTxt;
         banner.homeHeAwardTxt = homeHeAwardTxt;
@@ -56,7 +56,7 @@ export class HomeService {
         const fileName = file.originalname;
         
 
-        const dir = './uploads/';
+        const dir = '../uploads/';
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const banner = await this.homeBanners.findOne(bannerId);
@@ -74,11 +74,11 @@ export class HomeService {
 
     async addNewAward(file: { buffer: Buffer, size: number, encoding: string, mimetype: string, originalname: string }, homeAwAwardTxt:string){
         const fileName = file.originalname;
-        const dir = './uploads/';
+        const dir = '../uploads/';
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const award = this.awards.create();
-        award.homeAwAwardImg = fileName;
+        award.homeAwAwardImg = "http://localhost:3000/uploads/" + fileName;
         award.homeAwAwardTxt = homeAwAwardTxt;
 
         return this.awards.save(award);
@@ -104,9 +104,13 @@ export class HomeService {
 
 
     // Add the community banner
-    async addNewCoBanner(homeCoImg: string){
+    async addNewCoBanner(file: { buffer: Buffer, size: number, encoding: string, mimetype: string, originalname: string }){
+        const fileName = file.originalname;
+        const dir = '../uploads/';
+        this.ensureDirectoryExistance(dir);
+        writeFileSync(dir + fileName, file.buffer);
         const community = this.community.create();
-        community.homeCoImg = homeCoImg;
+        community.homeCoImg = "http://localhost:3000/uploads/" + fileName;
         return this.community.save(community);
     }
 
@@ -122,11 +126,14 @@ export class HomeService {
     }
 
 
-    async addNewanahuac(homeAnTxt: string, homeAnIconImg: string, homeAnNumTxt: string, homeAnDesTxt:string  ){
-
+    async addNewanahuac(file: { buffer: Buffer, size: number, encoding: string, mimetype: string, originalname: string }, homeAnTxt: string, homeAnNumTxt: string, homeAnDesTxt:string  ){
+        const fileName = file.originalname;
+        const dir = '../uploads/';
+        this.ensureDirectoryExistance(dir);
+        writeFileSync(dir + fileName, file.buffer);
         const anahuac = this.anahuac.create();
         anahuac.homeAnTxt = homeAnTxt;
-        anahuac.homeAnIconImg = homeAnIconImg;
+        anahuac.homeAnIconImg = "http://localhost:3000/uploads/" + fileName;
         anahuac.homeAnNumTxt = homeAnNumTxt;
         anahuac.homeAnDesTxt = homeAnDesTxt;
 

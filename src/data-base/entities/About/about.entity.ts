@@ -5,7 +5,7 @@ import { ApiProperty } from '@nestjs/swagger';
 @Entity({
 })
 
-export class About {
+export class aboutpage {
     @PrimaryGeneratedColumn()
     @IsNotEmpty()
     @ApiProperty()

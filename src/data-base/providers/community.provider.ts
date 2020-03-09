@@ -1,5 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
-import { Community } from '../entities/Home/community.entity';
+import { homecommunity } from '../entities/Home/community.entity';
 
 
 export const homeCommunityDataBaseProvider = [
@@ -12,7 +12,7 @@ export const homeCommunityDataBaseProvider = [
             username: 'SA_User_admin@sorteosql',
             password: 'C5&Y8JL<yw+).)PV',
             database: 'HomePage',
-            name: 'homeCommunity',
+            name: 'homecommunity',
             entities: [
                 __dirname + '/../entities/Home/*.entity{.ts,.js}',
             ],
@@ -26,7 +26,7 @@ export const homeCommunityDataBaseProvider = [
 export const homeCommunityRepositoriesProviders = [
     {
         provide: 'HOME_COMMUNITY_ENTITY_REPOSITORY',
-        useFactory: (connection: Connection) => connection.getRepository(Community),
+        useFactory: (connection: Connection) => connection.getRepository(homecommunity),
         inject: ['DATABASE_HOME_COMMUNITY_CONNECTION'],
     }
 ];

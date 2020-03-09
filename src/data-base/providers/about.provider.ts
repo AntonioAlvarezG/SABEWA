@@ -1,5 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
-import { About } from '../../data-base/entities/About/about.entity';
+import { aboutpage } from '../../data-base/entities/About/about.entity';
 
 
 export const aboutDataBaseProvider = [
@@ -12,7 +12,7 @@ export const aboutDataBaseProvider = [
             username: 'SA_User_admin@sorteosql',
             password: 'C5&Y8JL<yw+).)PV',
             database: 'AboutPage',
-            name: 'aboutPage',
+            name: 'aboutpage',
             entities: [
                 __dirname + '/../entities/About/*.entity{.ts,.js}',
             ],
@@ -27,7 +27,7 @@ export const aboutDataBaseProvider = [
 export const aboutRepositoriesProviders = [
     {
         provide: 'ABOUT_REPOSITORY',
-        useFactory: (connection: Connection) => connection.getRepository(About),
+        useFactory: (connection: Connection) => connection.getRepository(aboutpage),
         inject: ['DATABASE_ABOUT_CONNECTION'],
     }
 ];

@@ -1,5 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
-import { Anahuac } from '../entities/Home/anahuac.entity';
+import { homeanahuac } from '../entities/Home/anahuac.entity';
 
 
 export const homeAnahuacDataBaseProvider = [
@@ -12,7 +12,7 @@ export const homeAnahuacDataBaseProvider = [
             username: 'SA_User_admin@sorteosql',
             password: 'C5&Y8JL<yw+).)PV',
             database: 'HomePage',
-            name: 'homeAnahuac',
+            name: 'homeanahuac',
             entities: [
                 __dirname + '/../entities/Home/*.entity{.ts,.js}',
             ],
@@ -26,7 +26,7 @@ export const homeAnahuacDataBaseProvider = [
 export const homeAnahuacRepositoriesProviders = [
     {
         provide: 'HOME_ANAHUAC_ENTITY_REPOSITORY',
-        useFactory: (connection: Connection) => connection.getRepository(Anahuac),
+        useFactory: (connection: Connection) => connection.getRepository(homeanahuac),
         inject: ['DATABASE_HOME_ANAHUAC_CONNECTION'],
     }
 ];

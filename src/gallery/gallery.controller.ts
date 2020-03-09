@@ -1,7 +1,8 @@
-import { Controller, Post, Body, Get, Put, Delete, Res, HttpStatus, Param, UseGuards, UseInterceptors, Query } from '@nestjs/common';
+import { Controller, Post, Body, Get, Put, Delete, Res, HttpStatus, Param, UseGuards, UseInterceptors, Query, UploadedFile } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { GalleryService } from './gallery.service';
 import { Gallery } from '../data-base/entities/Gallery/gallery.entity';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('Gallery Page  End-Points')
 @Controller('api/gallery')
@@ -13,10 +14,12 @@ export class GalleryController {
     @Post()
     @ApiResponse({ status: 200, description: 'Succes saving', type: Gallery, isArray: true })
     @ApiOperation({ summary: 'Add new Image', description: 'Add a new image to the gallery' })
+    @UseInterceptors(FileInterceptor('file'))
     addNewPhoto(
-        @Body() body: { image: string, category: string}
+        @UploadedFile() file,
+        @Body() body: {  category: string}
     ) {
-        return this.gallery.addNewPhoto(body.image, body.category);
+        return this.gallery.addNewPhoto(file, body.category);
     }
 
     @Get()

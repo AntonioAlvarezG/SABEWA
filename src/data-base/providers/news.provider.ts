@@ -1,5 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
-import { Awards } from '../entities/Home/awards.entity';
+import { homeawards } from '../entities/Home/awards.entity';
 import { News } from '../entities/News/news.entity';
 
 

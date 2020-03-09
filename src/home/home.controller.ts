@@ -3,9 +3,9 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiTags, ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { HomeService } from './home.service';
 import { homebanners } from '../data-base/entities/Home/home-banners.entity';
-import { Awards } from '../data-base/entities/Home/awards.entity';
-import { Community } from '../data-base/entities/Home/community.entity';
-import { Anahuac } from '../data-base/entities/Home/anahuac.entity';
+import { homeawards } from '../data-base/entities/Home/awards.entity';
+import { homecommunity } from '../data-base/entities/Home/community.entity';
+import { homeanahuac } from '../data-base/entities/Home/anahuac.entity';
 import { AuthGuard } from '@nestjs/passport';
 // import { LastBuy } from '../data-base/entities/Home/last-buy.entity';
 
@@ -55,7 +55,7 @@ export class HomeController {
     // add new award
 
     @Post('award')
-    @ApiResponse({ status: 200, type: Awards, isArray: true })
+    @ApiResponse({ status: 200, type: homeawards, isArray: true })
     @ApiOperation({ summary: 'Add new clasification award', description: 'add new award ratings ' })
     @UseInterceptors(FileInterceptor('file'))
     addNewAward(@UploadedFile() file,
@@ -68,7 +68,7 @@ export class HomeController {
     // get awards
 
     @Get('award')
-    @ApiResponse({ status: 200, type: Awards, isArray: true })
+    @ApiResponse({ status: 200, type: homeawards, isArray: true })
     @ApiOperation({summary: 'Get all awards', description: 'Get all awards ratings' })
     getAllAwards(){
         return this.home.getAwards();
@@ -78,7 +78,7 @@ export class HomeController {
     // update award
 
     @Put('awards/:awardId')
-    @ApiResponse({ status: 200, description: 'Succes updating', type: Awards, isArray: true })
+    @ApiResponse({ status: 200, description: 'Succes updating', type: homeawards, isArray: true })
     @ApiOperation({ summary: 'update awards', description: 'update the awards' })
     updateawards(@Param('awardId') awardId: string,
         @Body() body: { homeAwAwardImg: string, homeAwAwardTxt: string}) {
@@ -88,16 +88,18 @@ export class HomeController {
 
     // post a community banner
     @Post('community')
-    @ApiResponse({ status: 200, type: Community, isArray: true })
+    @ApiResponse({ status: 200, type: homecommunity, isArray: true })
+    @UseInterceptors(FileInterceptor('file'))
     @ApiOperation({ summary: 'Add Community banner', description: 'Add the community Banner ' })
-    addNewCoBanner(@Body() body: { homeCoImg: string }
+    addNewCoBanner(
+    @UploadedFile() file,
     ) {
-        return this.home.addNewCoBanner(body.homeCoImg);
+        return this.home.addNewCoBanner(file);
     }
 
     // get a community banner
     @Get('community')
-    @ApiResponse({ status: 200, type: Community, isArray: true })
+    @ApiResponse({ status: 200, type: homecommunity, isArray: true })
     @ApiOperation({ summary: 'Get the community Banner', description: 'Get the banner of the community section' })
     getCoBanner() {
         return this.home.getCoBanner();
@@ -106,7 +108,7 @@ export class HomeController {
     //update community
 
     @Put('community/:communitydId')
-    @ApiResponse({ status: 200, type: Community, isArray: true })
+    @ApiResponse({ status: 200, type: homecommunity, isArray: true })
     @ApiOperation({ summary: 'update the community section', description: 'update the banner of the community section' })
     updateCommunity(@Param('communitydId') communitydId: string,
         @Body() body: { homeCoImg: string}){
@@ -115,11 +117,14 @@ export class HomeController {
 
     // post a anahuac section 
     @Post('anahuac')
-    @ApiResponse({ status: 200, type: Anahuac, isArray: true })
+    @ApiResponse({ status: 200, type: homeanahuac, isArray: true })
     @ApiOperation({ summary: 'Add icons to the anahuac section' })
-    addNewanahuac(@Body() body: { homeAnTxt: string, homeAnIconImg: string, homeAnNumTxt:string,homeAnDesTxt: string}
+    @UseInterceptors(FileInterceptor('file'))
+    addNewanahuac(
+    @UploadedFile() file, 
+    @Body() body: { homeAnTxt: string, homeAnIconImg: string, homeAnNumTxt:string,homeAnDesTxt: string}
     ) {
-        return this.home.addNewanahuac(body.homeAnTxt, body.homeAnIconImg, body.homeAnNumTxt, body.homeAnDesTxt);
+        return this.home.addNewanahuac(file, body.homeAnTxt, body.homeAnNumTxt, body.homeAnDesTxt);
     }
 
     
@@ -127,7 +132,8 @@ export class HomeController {
 
     // get the anahuac section
     @Get('anahuac')
-    @ApiResponse({ status: 200, type: Anahuac, isArray: true })
+    @ApiResponse({ status: 200, type: homeanahuac, isArray: true })
+    @UseInterceptors(FileInterceptor('file'))
     @ApiOperation({ summary: 'Get icons to the anahuac section', description: 'Get the icon section of anahuac' })
     getAnahuac() {
         return this.home.getAnahuac();
@@ -135,7 +141,7 @@ export class HomeController {
 
 
     @Put('anahuac/:anahuacId')
-    @ApiResponse({ status: 200, type: Anahuac, isArray: true })
+    @ApiResponse({ status: 200, type: homeanahuac, isArray: true })
     @ApiOperation({ summary: 'update icons to the anahuac section', description: 'update the icon section of anahuac' })
     updateAnahuac(@Param('anahuacId') anahuacId: string,
                   @Body() body: { homeAnTxt: string, homeAnIconImg: string, homeAnNumTxt: string, homeAnDesTxt: string}){
