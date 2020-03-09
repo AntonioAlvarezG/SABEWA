@@ -1,5 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
-import { HomeBanners } from '../entities/Home/home-banners.entity';
+import { homebanners } from '../entities/Home/home-banners.entity';
 
 
 export const homeBannersDataBaseProvider = [
@@ -12,7 +12,7 @@ export const homeBannersDataBaseProvider = [
             username: 'SA_User_admin@sorteosql',
             password: 'C5&Y8JL<yw+).)PV',
             database: 'HomePage',
-            name: 'homeBanners',
+            name: 'homebanners',
             entities: [
                 __dirname + '/../entities/Home/*.entity{.ts,.js}',
             ],
@@ -26,7 +26,7 @@ export const homeBannersDataBaseProvider = [
 export const homeBannersRepositoriesProviders = [
     {
         provide: 'HOME_BANNERS_ENTITY_REPOSITORY',
-        useFactory: (connection: Connection) => connection.getRepository(HomeBanners),
+        useFactory: (connection: Connection) => connection.getRepository(homebanners),
         inject: ['DATABASE_HOME_BANNERS_CONNECTION'],
     }
 ];

@@ -5,7 +5,7 @@ import { ApiProperty } from '@nestjs/swagger';
 @Entity({
 })
 
-export class HomeBanners {
+export class homebanners {
     @PrimaryGeneratedColumn()
     @IsNotEmpty()
     @ApiProperty()

@@ -2,7 +2,7 @@ import { Controller, Post, Body, Get, Put, Delete, Res, HttpStatus, Param, UseGu
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiTags, ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { HomeService } from './home.service';
-import { HomeBanners } from '../data-base/entities/Home/home-banners.entity';
+import { homebanners } from '../data-base/entities/Home/home-banners.entity';
 import { Awards } from '../data-base/entities/Home/awards.entity';
 import { Community } from '../data-base/entities/Home/community.entity';
 import { Anahuac } from '../data-base/entities/Home/anahuac.entity';
@@ -19,7 +19,7 @@ export class HomeController {
 
 
     @Post()
-    @ApiResponse({ status: 200, description: 'Succes saving', type: HomeBanners, isArray:true })
+    @ApiResponse({ status: 200, description: 'Succes saving', type: homebanners, isArray:true })
     @ApiOperation({ summary: 'Add new Banner', description: 'Add a new Banner to the home page' })
     @UseInterceptors(FileInterceptor('file'))
     addNewBanner(
@@ -30,14 +30,14 @@ export class HomeController {
     }
 
     @Get()
-    @ApiResponse({ status: 200, type: HomeBanners, isArray: true })
+    @ApiResponse({ status: 200, type: homebanners, isArray: true })
     @ApiOperation({ summary: 'Get all the banners', description: 'Get all the Banners for the home page slider' })
     getAllBanners(){
         return this.home.getBanners();
     }
 
     @Put('banner/:bannerId')
-    @ApiResponse({ status: 200, description: 'Succes updating', type: HomeBanners, isArray: true })
+    @ApiResponse({ status: 200, description: 'Succes updating', type: homebanners, isArray: true })
     @ApiOperation({ summary: 'update Banners', description: 'update the home page banners' })
     @UseInterceptors(FileInterceptor('file'))
     updateBanners(@Param('bannerId') bannerId: string,

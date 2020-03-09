@@ -11,7 +11,7 @@ import { ConfigModule } from './config/config.module';
 
 
 @Module({
-  imports: [DataBaseModule, HomeModule, AboutModule, GalleryModule, NewsModule, IdentityModule, ConfigModule ],
+  imports: [DataBaseModule, HomeModule, AboutModule, GalleryModule, NewsModule, IdentityModule, ConfigModule],
   controllers: [AppController],
   providers: [AppService, IdentityModule, ConfigModule],
 })

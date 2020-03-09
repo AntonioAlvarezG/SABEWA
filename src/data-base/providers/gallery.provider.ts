@@ -1,5 +1,4 @@
 import { createConnection, Connection } from 'typeorm';
-import { HomeBanners } from '../entities/Home/home-banners.entity';
 import { Gallery } from '../entities/Gallery/gallery.entity';
 
 
