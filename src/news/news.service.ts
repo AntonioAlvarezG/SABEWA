@@ -21,7 +21,7 @@ export class NewsService {
         writeFileSync(dir + fileName, file.buffer);
         const post = this.news.create();
         post.newsCatTxt = newsCatTxt;
-        post.newsImg = "http://phpstack-258137-1183389.cloudwaysapps.com/" + fileName;
+        post.newsImg = "http://phpstack-258137-1183389.cloudwaysapps.com/uploads/" + fileName;
         post.newsTitle = newsTitle;
         post.newsDescription = newsDescription;
 

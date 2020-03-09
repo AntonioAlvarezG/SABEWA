@@ -30,7 +30,7 @@ export class HomeService {
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const banner = this.homeBanners.create();
-        banner.homeHeSliderImg = "http://phpstack-258137-1183389.cloudwaysapps.com/" + fileName;
+        banner.homeHeSliderImg = "http://phpstack-258137-1183389.cloudwaysapps.com/uploads/" + fileName;
         banner.homeHePlaceTxt = homeHePlaceTxt;
         banner.homeHeLocateTxt = homeHeLocateTxt;
         banner.homeHeAwardTxt = homeHeAwardTxt;
@@ -78,7 +78,7 @@ export class HomeService {
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const award = this.awards.create();
-        award.homeAwAwardImg = "http://phpstack-258137-1183389.cloudwaysapps.com/" + fileName;
+        award.homeAwAwardImg = "http://phpstack-258137-1183389.cloudwaysapps.com/uploads/" + fileName;
         award.homeAwAwardTxt = homeAwAwardTxt;
 
         return this.awards.save(award);
@@ -110,7 +110,7 @@ export class HomeService {
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const community = this.community.create();
-        community.homeCoImg = "http://phpstack-258137-1183389.cloudwaysapps.com/" + fileName;
+        community.homeCoImg = "http://phpstack-258137-1183389.cloudwaysapps.com/uploads/" + fileName;
         return this.community.save(community);
     }
 
@@ -133,7 +133,7 @@ export class HomeService {
         writeFileSync(dir + fileName, file.buffer);
         const anahuac = this.anahuac.create();
         anahuac.homeAnTxt = homeAnTxt;
-        anahuac.homeAnIconImg = "http://phpstack-258137-1183389.cloudwaysapps.com/" + fileName;
+        anahuac.homeAnIconImg = "http://phpstack-258137-1183389.cloudwaysapps.com/uploads/" + fileName;
         anahuac.homeAnNumTxt = homeAnNumTxt;
         anahuac.homeAnDesTxt = homeAnDesTxt;
 
