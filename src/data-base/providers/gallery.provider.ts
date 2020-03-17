@@ -7,12 +7,12 @@ export const galleryDataBaseProvider = [
         provide: 'DATABASE_GALLERY_CONNECTION',
         useFactory: async () => await createConnection({
             type: 'mysql',
-            host: 'sorteosql.mysql.database.azure.com',
-            port: 3306,
-            username: 'SA_User_admin@sorteosql',
+            host: 'localhost',
+            port: 8889,
+            username: 'SA_User_admin',
             password: 'C5&Y8JL<yw+).)PV',
-            database: 'galleryPage',
-            name: 'gallery',
+            database: 'sabedb',
+            name: 'galleryConnection',
             entities: [
                 __dirname + '/../entities/Gallery/*.entity{.ts,.js}',
             ],

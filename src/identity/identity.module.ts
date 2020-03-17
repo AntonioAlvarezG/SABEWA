@@ -12,7 +12,7 @@ import { JwtStrategy } from './auth/jwt.strategy';
 import { UserController } from './user/user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthRepository } from './auth/auth.repository';
-
+export const jwtSecret = 'kljasdg873qdkdsa8qgedfgkj';
 
 @Module({
   imports: [AuthRepository, ConfigModule,DataBaseModule, PassportModule.register({
@@ -23,7 +23,7 @@ import { AuthRepository } from './auth/auth.repository';
       inject: [ConfigService],
       useFactory(config: ConfigService) {
         return {
-          secret: config.get(Configuration.JWT_SECRET),
+          secret: 'kljasdg873qdkdsa8qgedfgkj',
           signOptions: {
             expiresIn: 3600,
           },

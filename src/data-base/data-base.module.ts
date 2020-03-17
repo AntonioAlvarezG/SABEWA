@@ -1,25 +1,18 @@
 import { Module } from '@nestjs/common';
 import { identityDataBaseProvider, identityRepositoriesProviders } from './providers/user.provider';
-import { homeAnahuacDataBaseProvider, homeAnahuacRepositoriesProviders } from './providers/anahuac.provider';
-import { homeAwardsRepositoriesProviders, homeAwardsDataBaseProvider } from './providers/awards.provider';
-import { homeCommunityDataBaseProvider, homeCommunityRepositoriesProviders } from './providers/community.provider';
-// import { homefooterDataBaseProvider, homefooterRepositoriesProviders } from './providers/last-buy.provider';
-import { homeBannersDataBaseProvider, homeBannersRepositoriesProviders } from './providers/homeBanners.provider';
-import { aboutValuesDataBaseProvider, aboutValuesRepositoriesProviders } from './providers/about-values.provider';
-import { aboutDataBaseProvider, aboutRepositoriesProviders } from './providers/about.provider';
 import { galleryRepositoriesProviders, galleryDataBaseProvider } from './providers/gallery.provider';
 import { newsDataBaseProvider, newsRepositoriesProviders } from './providers/news.provider';
+import { legalsDataBaseProvider, legalsRepositoriesProviders } from './providers/legals.provider';
+import { dateDataBaseProvider } from './providers/dates.provider';
+import { datesRepositoriesProviders } from './providers/dates.provider';
+import { awardsDataBaseProvider, awardsRepositoriesProviders } from './providers/awards.provider';
 
 @Module({
-    providers: [...identityDataBaseProvider, ...identityRepositoriesProviders, ...homeAnahuacDataBaseProvider, ...homeAnahuacRepositoriesProviders,
-        ...homeAwardsRepositoriesProviders, ...homeAwardsDataBaseProvider, ...homeCommunityDataBaseProvider, ...homeCommunityRepositoriesProviders,
-         ...homeBannersDataBaseProvider, ...homeBannersRepositoriesProviders, 
-        ...aboutValuesDataBaseProvider, ...aboutValuesRepositoriesProviders, ...aboutDataBaseProvider, ...aboutRepositoriesProviders, ...galleryRepositoriesProviders, ...galleryDataBaseProvider,
-        ...newsRepositoriesProviders, ...newsDataBaseProvider],
-    exports: [...identityDataBaseProvider, ...identityRepositoriesProviders, ...homeAnahuacDataBaseProvider, ...homeAnahuacRepositoriesProviders,
-        ...homeAwardsRepositoriesProviders, ...homeAwardsDataBaseProvider, ...homeCommunityDataBaseProvider, ...homeCommunityRepositoriesProviders,
-        ...homeBannersDataBaseProvider, ...homeBannersRepositoriesProviders, 
-        ...aboutValuesDataBaseProvider, ...aboutValuesRepositoriesProviders, ...aboutDataBaseProvider, ...aboutRepositoriesProviders,...galleryRepositoriesProviders, ...galleryDataBaseProvider,
-        ...newsRepositoriesProviders, ...newsDataBaseProvider],
+    providers: [...identityDataBaseProvider, ...identityRepositoriesProviders, ...galleryRepositoriesProviders, ...galleryDataBaseProvider,
+        ...newsRepositoriesProviders, ...newsDataBaseProvider, ...legalsDataBaseProvider, ...legalsRepositoriesProviders, ...dateDataBaseProvider, ...datesRepositoriesProviders,
+        ...awardsDataBaseProvider, ...awardsRepositoriesProviders  ],
+    exports: [...identityDataBaseProvider, ...identityRepositoriesProviders, ...galleryRepositoriesProviders, ...galleryDataBaseProvider,
+        ...newsRepositoriesProviders, ...newsDataBaseProvider, ...legalsDataBaseProvider, ...legalsRepositoriesProviders, ...dateDataBaseProvider, ...datesRepositoriesProviders,
+        ...awardsDataBaseProvider, ...awardsRepositoriesProviders ],
 })
 export class DataBaseModule {}

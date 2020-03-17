@@ -1,20 +1,20 @@
 import { createConnection, Connection } from 'typeorm';
-import { homeawards } from '../entities/Home/awards.entity';
+import { Awards } from '../entities/awards/awards.entity';
 
 
-export const homeAwardsDataBaseProvider = [
+export const awardsDataBaseProvider = [
     {
-        provide: 'DATABASE_HOME_AWARDS_CONNECTION',
+        provide: 'DATABASE_AWARDS_CONNECTION',
         useFactory: async () => await createConnection({
             type: 'mysql',
-            host: 'sorteosql.mysql.database.azure.com',
-            port: 3306,
-            username: 'SA_User_admin@sorteosql',
+            host: 'localhost',
+            port: 8889,
+            username: 'SA_User_admin',
             password: 'C5&Y8JL<yw+).)PV',
-            database: 'HomePage',
-            name: 'homeawards',
+            database: 'sabedb',
+            name: 'awardsConnection',
             entities: [
-                __dirname + '/../entities/Home/*.entity{.ts,.js}',
+                __dirname + '/../entities/awards/*.entity{.ts,.js}',
             ],
 
             synchronize: false,
@@ -23,10 +23,10 @@ export const homeAwardsDataBaseProvider = [
 ];
 
 
-export const homeAwardsRepositoriesProviders = [
+export const awardsRepositoriesProviders = [
     {
-        provide: 'HOME_AWARDS_ENTITY_REPOSITORY',
-        useFactory: (connection: Connection) => connection.getRepository(homeawards),
-        inject: ['DATABASE_HOME_AWARDS_CONNECTION'],
+        provide: 'AWARD_ENTITY_REPOSITORY',
+        useFactory: (connection: Connection) => connection.getRepository(Awards),
+        inject: ['DATABASE_AWARDS_CONNECTION'],
     }
 ];

@@ -7,11 +7,11 @@ export const identityDataBaseProvider = [
         provide: 'DATABASE_IDENTITY_CONNECTION',
         useFactory: async () => await createConnection({
             type: 'mysql',
-            host: 'sorteosql.mysql.database.azure.com',
-            port: 3306,
-            username: 'SA_User_admin@sorteosql',
+            host: 'localhost',
+            port: 8889,
+            username: 'SA_User_admin',
             password: 'C5&Y8JL<yw+).)PV',
-            database: 'Identidad',
+            database: 'sabedb',
             name: 'identityConnection',
             entities: [
                 __dirname + '/../entities/identity/*.entity{.ts,.js}',

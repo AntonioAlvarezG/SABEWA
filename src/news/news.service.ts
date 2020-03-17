@@ -16,12 +16,12 @@ export class NewsService {
     async addNewPost(file: { buffer: Buffer, size: number, encoding: string, mimetype: string, originalname: string },
         newsCatTxt: string, newsTitle: string, newsDescription: string) {
         const fileName = file.originalname;
-        const dir = '../uploads/';
+        const dir = './uploads/';
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
         const post = this.news.create();
         post.newsCatTxt = newsCatTxt;
-        post.newsImg = "http://phpstack-258137-1183389.cloudwaysapps.com/uploads/" + fileName;
+        post.newsImg = "http://localhost:3000/uploads/" + fileName;
         post.newsTitle = newsTitle;
         post.newsDescription = newsDescription;
 

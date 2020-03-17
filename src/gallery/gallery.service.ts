@@ -15,12 +15,12 @@ export class GalleryService {
     async addNewPhoto(file: { buffer: Buffer, size: number, encoding: string, mimetype: string, originalname: string }
         , category: string) {
         const fileName = file.originalname;
-        const dir = '../uploads/';
+        const dir = './uploads/';
         this.ensureDirectoryExistance(dir);
         writeFileSync(dir + fileName, file.buffer);
 
         const photo = this.gallery.create();
-        photo.image = "http://phpstack-258137-1183389.cloudwaysapps.com/uploads/" + fileName;
+        photo.image = "http://localhost:3000/uploads/" + fileName;
         photo.category = category;
 
         return this.gallery.save(photo);

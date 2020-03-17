@@ -1,12 +1,12 @@
 [
     {
         "type": "mysql",
-        "host": "sorteosql.mysql.database.azure.com",
-        "port": 3306,
+        "host": "localhost",
+        "port": 8889,
         "name": "identityConnection",
-        "username": "SA_User_admin@sorteosql",
+        "username": "SA_User_admin",
         "password": "C5&Y8JL<yw+).)PV",
-        "database": "Identidad",
+        "database": "sabedb",
         "entities": [
             "src/data-base/entities/identity/**/*.entity{.ts,.js}"
         ],
@@ -14,27 +14,66 @@
     },
     {
         "type": "mysql",
-        "host": "sorteosql.mysql.database.azure.com",
-        "port": 3306,
-        "name": "homeBanners",
-        "username": "SA_User_admin@sorteosql",
+        "host": "localhost",
+        "port": 8889,
+        "name": "legalesConnection",
+        "username": "SA_User_admin",
         "password": "C5&Y8JL<yw+).)PV",
-        "database": "HomePage",
+        "database": "sabedb",
         "entities": [
-            "src/data-base/entities/**/*.entity{.ts,.js}"
+            "src/data-base/entities/legales/**/*.entity{.ts,.js}"
         ],
         "synchronize": false
     },
     {
         "type": "mysql",
-        "host": "sorteosql.mysql.database.azure.com",
-        "port": 3306,
-        "name": "homePage",
-        "username": "SA_User_admin@sorteosql",
+        "host": "localhost",
+        "port": 8889,
+        "name": "datesConnection",
+        "username": "SA_User_admin",
         "password": "C5&Y8JL<yw+).)PV",
-        "database": "Sorteo",
+        "database": "sabedb",
         "entities": [
-            "src/data-base/entities/**/*.entity{.ts,.js}"
+            "src/data-base/entities/dates/**/*.entity{.ts,.js}"
+        ],
+        "synchronize": false
+    },
+    {
+        "type": "mysql",
+        "host": "localhost",
+        "port": 8889,
+        "name": "awardsConnection",
+        "username": "SA_User_admin",
+        "password": "C5&Y8JL<yw+).)PV",
+        "database": "sabedb",
+        "entities": [
+            "src/data-base/entities/awards/**/*.entity{.ts,.js}"
+        ],
+        "synchronize": false
+    },
+    {
+        "type": "mysql",
+        "host": "localhost",
+        "port": 8889,
+        "name": "newsConnection",
+        "username": "SA_User_admin",
+        "password": "C5&Y8JL<yw+).)PV",
+        "database": "sabedb",
+        "entities": [
+            "src/data-base/entities/News/**/*.entity{.ts,.js}"
+        ],
+        "synchronize": false
+    },
+    {
+        "type": "mysql",
+        "host": "localhost",
+        "port": 8889,
+        "name": "galleryConnection",
+        "username": "SA_User_admin",
+        "password": "C5&Y8JL<yw+).)PV",
+        "database": "sabedb",
+        "entities": [
+            "src/data-base/entities/Gallery/**/*.entity{.ts,.js}"
         ],
         "synchronize": false
     }

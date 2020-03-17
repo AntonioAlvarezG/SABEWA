@@ -21,7 +21,7 @@ export class News {
     @ApiProperty()
     newsImg: string;
     
-    @Column()
+    @Column({ type: 'timestamp', name: 'created_at' })
     @IsNotEmpty()
     @ApiProperty()
     newsDate: Date;
